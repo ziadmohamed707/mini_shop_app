@@ -17,20 +17,31 @@ class ProductDetailsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(height: 130),
             Center(
               child: Image.network(
                 product.image,
                 height: 150,
               ),
             ),
-            const SizedBox(height: 2),
+            const SizedBox(height: 55),
             Text(product.title,
                 style: const TextStyle(
-                    fontSize: 24, fontWeight: FontWeight.bold)),
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),),
+            const SizedBox(height: 30),
+            Container(
+                alignment: Alignment.centerRight,
+                child: Text('Price: \$${product.price.toString()}',style: const TextStyle(fontSize: 20),)),
+            const SizedBox(height: 30),
+
+            Text(
+              product.description,
+              style: const TextStyle(fontSize: 16),
+            ),
             const SizedBox(height: 2),
-            Text(product.description),
-            const SizedBox(height: 2),
-            Text('Price: \$${product.price.toString()}'),
+
             ElevatedButton(
               onPressed: () {
                 context.read<CartCubit>().addToCart(product);
